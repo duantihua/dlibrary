@@ -30,6 +30,10 @@ void main(string[] args){
   lc.visit();
 }
 
+/**
+ * Directory File line counter
+ *
+ */
 class LineCounter{
   uint[string] filelines;
   string[] fileNames=[];
@@ -46,7 +50,8 @@ class LineCounter{
   void visit(){
     if(!path.isDir) return;
     sum=0;
-    auto start=Clock.currTime().stdTime();
+    StopWatch sw;
+    sw.start();
     //auto dFiles=filter!`endsWith(a.name,"*.java")`(dirEntries(path, SpanMode.depth));
     foreach (string name;dirEntries(path, SpanMode.breadth)) {
       if(name[$-suffix.length..$] == suffix){
@@ -58,11 +63,10 @@ class LineCounter{
         sum += fileline;
       }
     }
-    auto elapse=Clock.currTime().stdTime()-start;
     foreach(name;fileNames){
       writeln(name ,"\t",filelines[name]);
     }
-    writeln("overall " ,sum," in ",elapse/1000000," ms");
+    writeln("overall " ,sum," in ",sw.peek().msecs," ms");
   }
 
   int counter(string filename){
