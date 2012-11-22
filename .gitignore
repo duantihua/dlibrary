@@ -2,4 +2,4 @@
 *~
 
 # Build output directies
-.o
+*.o
