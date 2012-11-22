@@ -1,0 +1,5 @@
+# Typically *NIX text editors, by default, append '~' to files on saving to make backups
+*~
+
+# Build output directies
+.o
