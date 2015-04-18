@@ -52,7 +52,6 @@ class LineCounter{
     sum=0;
     StopWatch sw;
     sw.start();
-    //auto dFiles=filter!`endsWith(a.name,"*.java")`(dirEntries(path, SpanMode.depth));
     foreach (string name;dirEntries(path, SpanMode.breadth)) {
       if(name[$-suffix.length..$] == suffix){
         auto fileline=counter(name);
